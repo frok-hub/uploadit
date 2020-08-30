@@ -10,11 +10,11 @@
  * https://t.me/TheDarkW3b
  */
 define('FILES_PATH', __DIR__.'/files');
-define('WEBSERVER_BASE_URL', 'yourdomain.com');
+define('WEBSERVER_BASE_URL', 'allinone.s4hbots.seshu.co');
 define('FILES_EXPIRE_TIME', 24 * 3600); // in seconds
 
 set_time_limit(0);
-
+ 
 if (!file_exists(__DIR__.'/madeline.php')) {
     copy('https://phar.madelineproto.xyz/madeline.php', __DIR__.'/madeline.php');
 }
@@ -84,18 +84,18 @@ class EventHandler extends \danog\MadelineProto\EventHandler
                 $text = $update['message']['message'];
                 $chat_id = $update['message']['from_id'];
                 if ($text == '/start') {
-                    yield $this->messages->sendMessage(['peer' => $update, 'message' => 'Hi! please send me any file url or file uploaded in Telegram and I will upload to Telegram as file or generate download link of that file. \n Kindly Donate @ConQuerorRobot If You Like This \n Support Group @CuratorCrew', 'reply_to_msg_id' => $message_id]);
+                    yield $this->messages->sendMessage(['peer' => $update, 'message' => 'Hi **Welcome To @s4h_allinonebot, This bot Generate link and Upload form url Creator @seshu2004 Supported Channel @s4hchannel  . \n Kindly Donate @ConQuerorRobot If You Like This \n Support Group @CuratorCrew', 'reply_to_msg_id' => $message_id]);
 
                     return;
                 }
                 if ($text == '/speedtest') {
-                    if (isset($this->latest_speedtest[$chat_id]) && time() - $this->latest_speedtest[$chat_id] < 3600) {
-                        yield $this->messages->sendMessage(['peer' => $update, 'message' => 'You can test speed once per hour.', 'reply_to_msg_id' => $message_id]);
+                    if (isset($this->latest_speedtest[$chat_id]) && time() - $this->latest_speedtest[$chat_id] < 60) {
+                        yield $this->messages->sendMessage(['peer' => $update, 'message' => 'You can test speed once **60** Seconds.', 'reply_to_msg_id' => $message_id]);
 
                         return;
                     }
                     $this->latest_speedtest[$chat_id] = time();
-                    $sent_message = yield $this->messages->sendMessage(['peer' => $update, 'message' => 'Testing download and upload speed…', 'reply_to_msg_id' => $message_id]);
+                    $sent_message = yield $this->messages->sendMessage(['peer' => $update, 'message' => 'Testing download and upload speed… **©** @s4hchannel', 'reply_to_msg_id' => $message_id]);
                     $process = new Amp\Process\Process('speedtest');
                     yield $process->start();
                     $output = yield Amp\ByteStream\buffer($process->getStdout());
@@ -139,8 +139,8 @@ class EventHandler extends \danog\MadelineProto\EventHandler
                     return;
                 }
                 $filesize = $headers['content-length'][0];
-                if ($filesize > 1024 ** 3) {
-                    yield $this->messages->sendMessage(['peer' => $update, 'message' => 'Your file should be snakker than 1 GB.', 'reply_to_msg_id' => $message_id]);
+                if ($filesize > 2048 ** 3) {
+                    yield $this->messages->sendMessage(['peer' => $update, 'message' => 'Your file should be snakker than 2 GB.', 'reply_to_msg_id' => $message_id]);
 
                     return;
                 }
